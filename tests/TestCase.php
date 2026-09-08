@@ -1,8 +1,8 @@
 <?php
 
-namespace Jeffersongoncalves\Savvycal\Tests;
+namespace JeffersonGoncalves\SavvyCal\Tests;
 
-use Jeffersongoncalves\Savvycal\SavvycalServiceProvider;
+use JeffersonGoncalves\SavvyCal\SavvyCalServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
@@ -10,7 +10,13 @@ class TestCase extends Orchestra
     protected function getPackageProviders($app): array
     {
         return [
-            SavvycalServiceProvider::class,
+            SavvyCalServiceProvider::class,
         ];
+    }
+
+    protected function defineEnvironment($app): void
+    {
+        $app['config']->set('savvycal.token', 'fake-token');
+        $app['config']->set('savvycal.timeout', 5);
     }
 }
